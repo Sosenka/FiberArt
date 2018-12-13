@@ -1,0 +1,15 @@
+RewriteEngine On
+:Location /*.php
+Use php53
+:Location
+RewriteCond %{HTTP_HOST} ^www\.fiberart\.pl$
+RewriteRule ^/?$ "http\:\/\/fiberart\.pl\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^46\.242\.240\.31
+RewriteRule (.*) http://www.fiberart.pl/$1 [R=301,L]
+php_flag zlib.output_compression on
+php_value zlib.output_compression_level 2
+RewriteCond %{HTTP_USER_AGENT} libwww-perl.* 
+RewriteRule .* ? [F,L]
+ServerSignature Off
+ServerTokens Prod
+
